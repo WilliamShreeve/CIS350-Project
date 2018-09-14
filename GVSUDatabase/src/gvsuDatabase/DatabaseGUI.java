@@ -1,5 +1,7 @@
 package gvsuDatabase;
 
-public class DatabaseGUI {
+import java.math.*;
 
+public class DatabaseGUI {
+	
 }
