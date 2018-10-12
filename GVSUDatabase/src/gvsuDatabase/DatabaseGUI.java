@@ -29,12 +29,14 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	
 	
 	public DatabaseGUI() {
+		
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
 		viewMenu = new JMenu("View");
 		
 		saveSerial = new JMenuItem("Save");
 		loadSerial = new JMenuItem("Load");
+		
 		addStudent = new JMenuItem("Add Student");
 		editStudent = new JMenuItem("Edit Student");
 		viewStudent = new JMenuItem("View Stuent");
