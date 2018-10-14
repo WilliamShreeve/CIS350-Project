@@ -41,8 +41,20 @@ public class Student implements Serializable{
 	 ******************************************************************/
 	public Student(String name, String major, String standing, 
 			String gNum, String expGrad) throws Exception{
+		/** sets the name of the student */
+		setName(name);
 		
+		/** sets the major of the student */
+		setMajor(major);
 		
+		/** sets the class standing of the student */
+		setStanding(standing);
+		
+		/** sets the G Number of the student */
+		setGNum(gNum);
+		
+		/** sets the expected graduation date of the student */
+		setExpGrad(expGrad);
 	}
 	
 	/*******************************************************************
