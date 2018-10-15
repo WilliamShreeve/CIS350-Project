@@ -19,7 +19,11 @@ public class StudentTable extends AbstractTableModel{
 	private static final long serialVersionUID = 1L;
 	
 	/** array of the column names */
-	private String[] columnNames;
+	private final String[] COL_NAMES = {"Name",
+            "Major",
+            "Standing",
+            "G-Number",
+            "Exp. Grad"};;
 	
 	/** ArrayList of students */
 	private ArrayList<Student> students;
@@ -33,11 +37,7 @@ public class StudentTable extends AbstractTableModel{
 	 ******************************************************************/
 	public StudentTable(){
 		students = new ArrayList<Student>();
-		columnNames = new String []{"Name",
-                "Major",
-                "Standing",
-                "G-Number",
-                "Exp. Grad"}; 
+
 		edits = new ArrayList<String>();
 	}
 	
@@ -58,7 +58,7 @@ public class StudentTable extends AbstractTableModel{
 	 ******************************************************************/
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return columnNames.length;
+		return COL_NAMES.length;
 	}
 	
 	/*******************************************************************
@@ -68,7 +68,7 @@ public class StudentTable extends AbstractTableModel{
 	 * @return returns the name of the specified column
 	 ******************************************************************/
 	public String getColumnName(int col) {
-		return columnNames[col];
+		return COL_NAMES[col];
 	}
 
 	/*******************************************************************
@@ -178,8 +178,8 @@ public class StudentTable extends AbstractTableModel{
 	/*******************************************************************
 	 * Converts a string input into a Student object
 	 * 
-	 * @param input The values to be converted into a Site object
-	 * @return Site object that holds the same information as the 
+	 * @param input The values to be converted into a Student object
+	 * @return Student object that holds the same information as the 
 	 * passed in values
 	 * 
 	 * @throws Exception When there are incorrect values
@@ -204,6 +204,20 @@ public class StudentTable extends AbstractTableModel{
 		return null;
 	}
 	
+	/******************************************************************
+	 * This method checks that there is no duplicate G-Numbers and that
+	 * it starts with a G.
+	 * @param s Student to check G-number
+	 * @return True if valid, false if invalid.
+	 ******************************************************************/
+	public boolean isValidGNum(Student s) {
+		for(Student s1: students) {
+			if(s1.getGNum() == s.getGNum())
+				return false;
+		}
+		return true;
+	}
+	
 	/*******************************************************************
 	 * This method sorts the students by name using a sort class called 
 	 * SortByName().
@@ -216,7 +230,7 @@ public class StudentTable extends AbstractTableModel{
 	/*******************************************************************
 	 * This method sorts the students by name.
 	 * 
-	 * @return The alphabetical order between two reservation names
+	 * @return The alphabetical order between two  names
 	 ******************************************************************/
 	private class SortByName implements Comparator<Student> {
 		@Override
@@ -235,8 +249,7 @@ public class StudentTable extends AbstractTableModel{
 		Collections.sort(getStudents(), new Comparator<Student>() {
 			   public int compare (Student o1, Student o2) {
 				   return o1.getStanding().compareTo(o2.getStanding());
-			   }
-			   });
+			   }});
 		refresh();
 	}
 }

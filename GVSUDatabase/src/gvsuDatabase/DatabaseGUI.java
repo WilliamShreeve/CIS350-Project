@@ -27,9 +27,14 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	private JMenuItem editStudent;
 	private JMenuItem viewStudent;
 	
+	/* Student Table View */
+	private StudentTable studentList;
 	
 	/*JFrame*/
 	private JPanel window;
+	
+	/* J Table */
+	private JTable jtable;
 	
 	/*Key listener*/
 	//private Key keyPressedListener;
@@ -38,6 +43,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	public DatabaseGUI() {
 		window = new JPanel(new BorderLayout());
 		menu = new JMenuBar();
+		studentList = new StudentTable();
 		
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
@@ -49,6 +55,9 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		addStudent = new JMenuItem("Add Student");
 		editStudent = new JMenuItem("Edit Student");
 		viewStudent = new JMenuItem("View Stuent");		
+		
+		jtable = new JTable(studentList);
+		add(new JScrollPane(jtable));
 	}
 	
 	public void run() {
@@ -58,8 +67,9 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		setUpActionListeners();
 		
 		window.add(menu, BorderLayout.NORTH);
-		
+		window.add(jtable, BorderLayout.CENTER);
 		this.add(window);
+		
 		this.setSize(1000,600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setTitle("Student Database");
@@ -109,7 +119,15 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 						getAbsolutePath();
 			}
 		}
+		else if(e.getSource() == addStudent) {
+			Student s = new Student();
+			AddStudentDialog dialog = new AddStudentDialog(this, s, studentList);
+			dialog.setModal(true);
+			dialog.setSize(300,300);
+			dialog.setVisible(true);
+			}
+		}
 		
-	}
+	
 	
 }

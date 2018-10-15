@@ -27,8 +27,8 @@ public class ViewSelectionDialog extends JDialog implements ActionListener{
 	
 	
 	/*******************************************************************
-	 * A constructor method that creates the JDialogBox for the check 
-	 * out of a site with the input of a JFrame.
+	 * A constructor method that creates the JDialogBox 
+	 * with the input of a JFrame.
 	 * 
 	 * @param parent The JFrame that holds the JDialogBox
 	 ******************************************************************/
