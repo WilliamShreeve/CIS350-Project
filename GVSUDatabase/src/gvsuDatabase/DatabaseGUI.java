@@ -1,15 +1,15 @@
 package gvsuDatabase;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.*;
 
 public class DatabaseGUI extends JFrame implements ActionListener{
 
 	/* Holds JMenus.*/
-	private JMenuBar menus;
+	private JMenuBar menu;
 	
 	/* JMenu for file options */
 	private JMenu fileMenu;
@@ -28,7 +28,16 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	private JMenuItem viewStudent;
 	
 	
+	/*JFrame*/
+	private JPanel window;
+	
+	/*Key listener*/
+	//private Key keyPressedListener;
+	
+	
 	public DatabaseGUI() {
+		window = new JPanel(new BorderLayout());
+		menu = new JMenuBar();
 		
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
@@ -39,8 +48,27 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		
 		addStudent = new JMenuItem("Add Student");
 		editStudent = new JMenuItem("Edit Student");
-		viewStudent = new JMenuItem("View Stuent");
+		viewStudent = new JMenuItem("View Stuent");		
+	}
+	
+	public void run() {
 		
+		this.setUpMenus();
+		
+		setUpActionListeners();
+		
+		window.add(menu, BorderLayout.NORTH);
+		
+		this.add(window);
+		this.setSize(1000,600);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setTitle("Student Database");
+		this.setVisible(true);
+	}
+	
+	public void setUpMenus() {
+		
+
 		fileMenu.add(saveSerial);
 		fileMenu.add(loadSerial);
 		
@@ -49,12 +77,38 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		
 		viewMenu.add(viewStudent);
 		
-		
+		menu.add(fileMenu);
+		menu.add(editMenu);
+		menu.add(viewMenu);
+	}
+	
+	private void setUpActionListeners() {
+		saveSerial.addActionListener(this);
+		loadSerial.addActionListener(this);
+		addStudent.addActionListener(this);
+		editStudent.addActionListener(this);
+		viewStudent.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource() == saveSerial) {
+			JFileChooser chooser = new JFileChooser();
+			int status = chooser.showSaveDialog(null);
+			if(status == JFileChooser.APPROVE_OPTION) {
+				String filename = chooser.getSelectedFile().
+						getAbsolutePath();
+			}
+		}
+		else if(e.getSource() == loadSerial){
+			JFileChooser chooser = new JFileChooser();
+			int status = chooser.showSaveDialog(null);
+			if(status == JFileChooser.APPROVE_OPTION) {
+				String filename = chooser.getSelectedFile().
+						getAbsolutePath();
+			}
+		}
 		
 	}
 	
