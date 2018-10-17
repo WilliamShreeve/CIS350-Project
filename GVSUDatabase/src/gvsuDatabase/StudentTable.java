@@ -67,6 +67,7 @@ public class StudentTable extends AbstractTableModel{
 	 * @param col the column index you want the name of
 	 * @return returns the name of the specified column
 	 ******************************************************************/
+	@Override
 	public String getColumnName(int col) {
 		return COL_NAMES[col];
 	}
