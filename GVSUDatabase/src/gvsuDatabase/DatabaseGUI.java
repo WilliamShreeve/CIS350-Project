@@ -20,12 +20,18 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	/* JMenu for different views. */
 	private JMenu viewMenu;
 	
+	/* JMenu for sorting student list. */
+	private JMenu sortMenu;
+	
 	/*JMenu Items*/
 	private JMenuItem saveSerial;
 	private JMenuItem loadSerial;
 	private JMenuItem addStudent;
 	private JMenuItem editStudent;
+	private JMenuItem deleteStudent;
 	private JMenuItem viewStudent;
+	private JMenuItem sortByName;
+	private JMenuItem sortByGPA;
 	
 	/* Student Table View */
 	private StudentTable studentList;
@@ -39,7 +45,10 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	/*Key listener*/
 	//private Key keyPressedListener;
 	
-	
+	/******************************************************************
+	 * Constructor method for DatabaseGUI. Creates the GUI, instantiates
+	 * the table view class, menu items and bars, and adds scroll pane.
+	 *****************************************************************/
 	public DatabaseGUI() {
 		window = new JPanel(new BorderLayout());
 		menu = new JMenuBar();
@@ -48,18 +57,28 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		fileMenu = new JMenu("File");
 		editMenu = new JMenu("Edit");
 		viewMenu = new JMenu("View");
+		sortMenu = new JMenu("Sort");
 		
 		saveSerial = new JMenuItem("Save");
 		loadSerial = new JMenuItem("Load");
 		
 		addStudent = new JMenuItem("Add Student");
 		editStudent = new JMenuItem("Edit Student");
-		viewStudent = new JMenuItem("View Stuent");		
+		deleteStudent = new JMenuItem("Delete Student");
+		
+		viewStudent = new JMenuItem("View Stuent");	
+		
+		sortByName = new JMenuItem("Sort By Name");
+		sortByGPA = new JMenuItem("Sort By GPA");
 		
 		jtable = new JTable(studentList);
 		add(new JScrollPane(jtable));
 	}
 	
+	/******************************************************************
+	 * Method that runs the GUI program. Sets up menu and menu items,
+	 * table view, and layout of the GUI.
+	 *****************************************************************/
 	public void run() {
 		
 		this.setUpMenus();
@@ -76,33 +95,47 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		this.setVisible(true);
 	}
 	
-	public void setUpMenus() {
+	/******************************************************************
+	 * This method adds all the required menu items to the menu choices,
+	 * then adds the menu choices to the menu bar.
+	 *****************************************************************/
+	private void setUpMenus() {
 		
-
 		fileMenu.add(saveSerial);
 		fileMenu.add(loadSerial);
 		
 		editMenu.add(addStudent);
 		editMenu.add(editStudent);
+		editMenu.add(deleteStudent);
 		
 		viewMenu.add(viewStudent);
 		
+		sortMenu.add(sortByName);
+		sortMenu.add(sortByGPA);
+		
 		menu.add(fileMenu);
 		menu.add(editMenu);
-		menu.add(viewMenu);
+		//menu.add(viewMenu);
+		menu.add(sortMenu);
 	}
 	
+	/******************************************************************
+	 * Sets up action listener for JMenu Items
+	 *****************************************************************/
 	private void setUpActionListeners() {
 		saveSerial.addActionListener(this);
 		loadSerial.addActionListener(this);
 		addStudent.addActionListener(this);
 		editStudent.addActionListener(this);
 		viewStudent.addActionListener(this);
+		deleteStudent.addActionListener(this);
+		sortByName.addActionListener(this);
+		sortByGPA.addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
 		if(e.getSource() == saveSerial) {
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showSaveDialog(null);
@@ -126,8 +159,17 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 			dialog.setSize(300,300);
 			dialog.setVisible(true);
 			}
+		else if(e.getSource() == deleteStudent) {
+			studentList.remove(jtable.getSelectedRow());
 		}
 		
-	
+		else if(e.getSource() == sortByName) {
+			studentList.sortByName();
+		}
+		else if(e.getSource() == sortByGPA) {
+			
+		}
+	}
+
 	
 }

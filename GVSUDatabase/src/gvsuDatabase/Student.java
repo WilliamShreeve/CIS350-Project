@@ -27,6 +27,9 @@ public class Student implements Serializable{
 	/** expected graduation date */
 	protected String expGrad;
 	
+	/** student's gpa **/
+	protected float gpa;
+	
 	/*******************************************************************
 	 * Constructor that sets up the student information with given 
 	 * parameters.
@@ -55,6 +58,7 @@ public class Student implements Serializable{
 		
 		/** sets the expected graduation date of the student */
 		setExpGrad(expGrad);
+		
 	}
 	
 	/*******************************************************************
@@ -114,6 +118,25 @@ public class Student implements Serializable{
 		return standing;
 	}
 	
+	/******************************************************************
+	 * Getter method for student's GPA
+	 * @return student's GPA as a float
+	 *****************************************************************/
+	public float getGPA() {
+		return gpa;
+	}
+	
+	/*******************************************************************
+	 * Setter method for the student's GPA.
+	 * 
+	 * @param g The student's GPA
+	 * @throws Exception A value less than 0 or higher than 4
+	 ******************************************************************/
+	public void setGPA(float g) throws Exception {
+		if(g > 4.0 || g < 0)
+			throw new Exception("Invalid GPA");
+		this.gpa = g;
+	}
 	/*******************************************************************
 	 * Setter method for the student's class standing.
 	 * 
