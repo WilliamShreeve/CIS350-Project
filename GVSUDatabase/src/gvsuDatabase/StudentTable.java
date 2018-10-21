@@ -56,8 +56,14 @@ public class StudentTable extends AbstractTableModel{
 		return students.size();
 	}
 	
+	/*******************************************************************
+	 * Replaces student with the parameter student
+	 * @param s	Student to replace student with
+	 * @param i Index to replace
+	 ******************************************************************/
 	public void replaceAt(Student s, int i) {
 		students.set(i, s);
+		this.refresh();
 	}
 
 	/*******************************************************************
