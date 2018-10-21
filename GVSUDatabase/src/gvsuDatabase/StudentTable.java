@@ -1,5 +1,10 @@
 package gvsuDatabase;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.GregorianCalendar;
@@ -252,5 +257,50 @@ public class StudentTable extends AbstractTableModel{
 				   return o1.getStanding().compareTo(o2.getStanding());
 			   }});
 		refresh();
+	}
+	
+	/*******************************************************************
+	 * Saves the list of students as a serializable file
+	 * @param filename name of file to save to 
+	 ******************************************************************/
+	public void saveAsSerialized(String filename) {
+		try {
+			FileOutputStream fos = new FileOutputStream(filename);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(students);
+			oos.close();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/*******************************************************************
+	 * Loads list of students from serialized file
+	 * @param filename Name of file to load from
+	 ******************************************************************/
+	@SuppressWarnings("unchecked")
+	public void loadFromSerialized(String filename) {
+		try {
+			FileInputStream fileIn = new FileInputStream(filename);
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			students = (ArrayList<Student>) in.readObject();
+			in.close();
+			fireTableRowsInserted(0, students.size());
+		}
+		catch(IOException e) {
+			JOptionPane.showMessageDialog
+			(null, "Invalid File!");
+		}
+		catch(ClassNotFoundException e) {
+			JOptionPane.showMessageDialog
+			(null, "Invalid File!");
+		}
+		catch(Exception e) {
+			JOptionPane.showMessageDialog
+			(null, "Invalid File!");
+		}
+		
 	}
 }

@@ -142,23 +142,28 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 			if(status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().
 						getAbsolutePath();
+				studentList.saveAsSerialized(filename);
 			}
 		}
+		
 		else if(e.getSource() == loadSerial){
 			JFileChooser chooser = new JFileChooser();
 			int status = chooser.showSaveDialog(null);
 			if(status == JFileChooser.APPROVE_OPTION) {
 				String filename = chooser.getSelectedFile().
 						getAbsolutePath();
+				studentList.loadFromSerialized(filename);
 			}
 		}
+		
 		else if(e.getSource() == addStudent) {
 			Student s = new Student();
 			AddStudentDialog dialog = new AddStudentDialog(this, s, studentList);
 			dialog.setModal(true);
 			dialog.setSize(300,300);
 			dialog.setVisible(true);
-			}
+		}
+		
 		else if(e.getSource() == deleteStudent) {
 			studentList.remove(jtable.getSelectedRow());
 		}
@@ -166,6 +171,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		else if(e.getSource() == sortByName) {
 			studentList.sortByName();
 		}
+		
 		else if(e.getSource() == sortByGPA) {
 			
 		}
