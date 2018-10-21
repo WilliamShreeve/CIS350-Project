@@ -111,7 +111,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		viewMenu.add(viewStudent);
 		
 		sortMenu.add(sortByName);
-		sortMenu.add(sortByGPA);
+		//sortMenu.add(sortByGPA);
 		
 		menu.add(fileMenu);
 		menu.add(editMenu);
@@ -162,6 +162,18 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 			dialog.setModal(true);
 			dialog.setSize(300,300);
 			dialog.setVisible(true);
+		}
+		
+		else if(e.getSource() == editStudent) {
+			try {
+				EditStudentDialog dialog = new EditStudentDialog(this, jtable.getSelectedRow(), studentList);
+				dialog.setModal(true);
+				dialog.setSize(300,300);
+				dialog.setVisible(true);
+			}
+			catch (Exception e1){
+				JOptionPane.showMessageDialog(null, "No Student Selected!");
+			}
 		}
 		
 		else if(e.getSource() == deleteStudent) {

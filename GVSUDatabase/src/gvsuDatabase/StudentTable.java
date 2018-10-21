@@ -55,6 +55,10 @@ public class StudentTable extends AbstractTableModel{
 		// TODO Auto-generated method stub
 		return students.size();
 	}
+	
+	public void replaceAt(Student s, int i) {
+		students.set(i, s);
+	}
 
 	/*******************************************************************
 	 * Gets the column count
@@ -119,16 +123,17 @@ public class StudentTable extends AbstractTableModel{
 	}
 	
 	/*******************************************************************
-	 * Gets the site at the requested index
+	 * Gets the student at the requested index
 	 * 
-	 * @param index the index of the requested site
-	 * @return the site at the specified index
+	 * @param index the index of the requested student
+	 * @return the student at the specified index
 	 ******************************************************************/
 	public Student getAtIndex(int index) {
 		return students.get(index);
 	}
+	
 	/*******************************************************************
-	 * Adds a site to the list (and updates the view)
+	 * Adds a student to the list (and updates the view)
 	 * 
 	 * @param site the site to be added to the list (and view)
 	 ******************************************************************/
@@ -139,7 +144,7 @@ public class StudentTable extends AbstractTableModel{
 	}
 
 	/*******************************************************************
-	 * Removes a site from the list (and updates the view)
+	 * Removes a student from the list
 	 * 
 	 * @param index the index in the list to be removed
 	 ******************************************************************/
@@ -148,6 +153,21 @@ public class StudentTable extends AbstractTableModel{
 		students.remove(index);
 		refresh();
 	}
+	
+	/*******************************************************************
+	 * Returns the student at the selected index
+	 * @param index	Index selected to retrieve student
+	 * @return	Student at the selected index
+	 * @throws Exception If index is out of bounds of list
+	 ******************************************************************/
+	public Student getAt(int index) throws Exception {
+		if(index <= students.size()-1) {
+			return students.get(index);
+		}
+		else
+			throw new Exception();
+	}
+	
 	
 	/*******************************************************************
 	 * Helper method that undo's previous operations

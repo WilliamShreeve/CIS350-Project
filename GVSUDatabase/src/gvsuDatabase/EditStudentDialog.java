@@ -85,11 +85,17 @@ public class EditStudentDialog extends JDialog implements ActionListener{
 	/* List of students */
 	private StudentTable studentList;
 	
+	/* Temporary Student to use to assign values */
+	private Student temp;
 	
-	public EditStudentDialog(JFrame occupy, Student s, StudentTable students) {
+	private int i;
+	
+	public EditStudentDialog(JFrame occupy, int index, StudentTable students) {
 		super(occupy);
-		student = s;
+		//student = s;
 		studentList = students;
+		temp = new Student();
+		i = index;
 		
 		/* Instantiate panel */
 		panel = new JPanel();
@@ -147,22 +153,12 @@ public class EditStudentDialog extends JDialog implements ActionListener{
 		standingSelection = new JComboBox<String>(STANDING_LIST);
 		standingLabel = new JLabel("Class Standing");
 		
-		int stand = 0;
-		
-		if(student.getStanding().equals("Freshman"))
-			stand = 0;
-		if(student.getStanding().equals("Sophomore"))
-			stand = 1;
-		if(student.getStanding().equals("Junior"))
-			stand = 2;
-		if(student.getStanding().equals("Senior"))
-			stand = 3;
 		
 		standingBox.add(standingLabel);
 		standingBox.add(Box.createHorizontalStrut(20));
 		standingBox.add(standingSelection);
 		panel.add(standingBox);
-		standingSelection.setSelectedItem(stand);
+		standingSelection.setSelectedItem(student.getStanding());
 		
 		okButton = new JButton("OK");
 		cancelButton = new JButton("Cancel");
@@ -190,14 +186,14 @@ public class EditStudentDialog extends JDialog implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			if(okButton == e.getSource()) {
 				try {
-					student.setName(nameText.getText());
-					student.setMajor(majorText.getText());
-					student.setGNum(gNumText.getText());
-					student.setStanding(standingSelection.getSelectedItem().toString());
-					student.setExpGrad(gradSelection.getSelectedItem().toString());
+					temp.setName(nameText.getText());
+					temp.setMajor(majorText.getText());
+					temp.setGNum(gNumText.getText());
+					temp.setStanding(standingSelection.getSelectedItem().toString());
+					temp.setExpGrad(gradSelection.getSelectedItem().toString());
 					
-					if(studentList.isValidGNum(student)) {
-						studentList.add(student);
+					if(studentList.isValidGNum(temp)) {
+						studentList.replaceAt(temp, i);
 					}
 					
 					else
