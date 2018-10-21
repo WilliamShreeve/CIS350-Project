@@ -90,9 +90,9 @@ public class EditStudentDialog extends JDialog implements ActionListener{
 	
 	private int i;
 	
-	public EditStudentDialog(JFrame occupy, int index, StudentTable students) {
+	public EditStudentDialog(JFrame occupy, int index, Student s, StudentTable students) {
 		super(occupy);
-		//student = s;
+		student = s;
 		studentList = students;
 		temp = new Student();
 		i = index;

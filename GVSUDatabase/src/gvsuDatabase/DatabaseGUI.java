@@ -166,7 +166,8 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		
 		else if(e.getSource() == editStudent) {
 			try {
-				EditStudentDialog dialog = new EditStudentDialog(this, jtable.getSelectedRow(), studentList);
+				Student s = studentList.getAt(jtable.getSelectedRow());
+				EditStudentDialog dialog = new EditStudentDialog(this, jtable.getSelectedRow(), s, studentList);
 				dialog.setModal(true);
 				dialog.setSize(300,300);
 				dialog.setVisible(true);
