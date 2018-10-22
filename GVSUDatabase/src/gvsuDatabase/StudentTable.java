@@ -14,6 +14,8 @@ import java.util.LinkedList;
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
 
+
+
 /***********************************************************************
  * The StudentTable class is the structure that all rows in the JTable 
  * will follow.
@@ -24,11 +26,7 @@ public class StudentTable extends AbstractTableModel{
 	private static final long serialVersionUID = 1L;
 	
 	/** array of the column names */
-	private final String[] COL_NAMES = {"Name",
-            "Major",
-            "Standing",
-            "G-Number",
-            "Exp. Grad"};;
+	private String[] COL_NAMES;
 	
 	/** ArrayList of students */
 	private ArrayList<Student> students;
@@ -42,7 +40,11 @@ public class StudentTable extends AbstractTableModel{
 	 ******************************************************************/
 	public StudentTable(){
 		students = new ArrayList<Student>();
-
+		COL_NAMES = new String[] {"Name",
+	            				"Major",
+	            				"Standing",
+	            				"G-Number",
+								"Exp. Grad"};
 		edits = new ArrayList<String>();
 	}
 	
