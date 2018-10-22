@@ -66,7 +66,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		editStudent = new JMenuItem("Edit Student");
 		deleteStudent = new JMenuItem("Delete Student");
 		
-		viewStudent = new JMenuItem("View Stuent");	
+		viewStudent = new JMenuItem("View Student");	
 		
 		sortByName = new JMenuItem("Sort By Name");
 		sortByGPA = new JMenuItem("Sort By GPA");
@@ -86,7 +86,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		setUpActionListeners();
 		
 		window.add(menu, BorderLayout.NORTH);
-		window.add(jtable, BorderLayout.CENTER);
+		window.add(new JScrollPane(jtable), BorderLayout.CENTER);
 		this.add(window);
 		
 		this.setSize(1000,600);
@@ -189,6 +189,4 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 			
 		}
 	}
-
-	
 }
