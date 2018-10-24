@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Student class keeps track of the student's information such as 
  * what their name is, their major and class standing, the courses they
  * are taking, and their current ID.
+ * @author William Shreeve, Hai Duong, Trunvuong Pham
  **********************************************************************/
 public class Student implements Serializable{
 

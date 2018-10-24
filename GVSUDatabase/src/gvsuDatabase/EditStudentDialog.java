@@ -15,6 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/*************************************************************************
+ * EditStudentDialog creates a JDialog to allow users to select and 
+ * edit a specific student, allowing them to change all values, so long 
+ * as they follow the rules of the object.
+ * @author William Shreeve, Hai Duong, Trungvuong Pham
+ *
+ ************************************************************************/
 public class EditStudentDialog extends JDialog implements ActionListener{
 	
 	/* Default serialID */

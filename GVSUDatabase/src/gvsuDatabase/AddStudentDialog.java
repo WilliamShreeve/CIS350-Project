@@ -15,6 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/*************************************************************************
+ * AddStudentDialog creates a JDialog box to allow users to add a 
+ * student to the current list of student, allowing them to set all the 
+ * currently editable fields to valid values.
+ * @author William Shreeve, Hai Duong, Trungvuong Pham
+ *
+ ************************************************************************/
 public class AddStudentDialog extends JDialog implements ActionListener{
 	
 	/* Default serialID */
@@ -86,6 +93,12 @@ public class AddStudentDialog extends JDialog implements ActionListener{
 	private StudentTable studentList;
 	
 	
+	/*************************************************************************
+	 * Creates the add student dialog to add a student to the list.
+	 * @param occupy JFrame to build ontop of.
+	 * @param s Student to add
+	 * @param students List of students
+	 ************************************************************************/
 	public AddStudentDialog(JFrame occupy, Student s, StudentTable students) {
 		super(occupy);
 		student = s;

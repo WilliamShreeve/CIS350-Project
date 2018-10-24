@@ -5,6 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/*************************************************************************
+ * ViewSelectionDialog is the class that will show the student's information.
+ * Currently, all the information contained in the Student class is shown
+ * so this class is not implemented nor completed for Release 1. It will be
+ * finished for Release 2.
+ * @author William Shreeve, Hai Duong, Trungvuong Pham
+ *
+ ************************************************************************/
 public class ViewSelectionDialog extends JDialog implements ActionListener{
 
 	/** default serial ID */

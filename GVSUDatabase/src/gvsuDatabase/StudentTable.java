@@ -16,10 +16,14 @@ import javax.swing.table.AbstractTableModel;
 
 
 
-/***********************************************************************
- * The StudentTable class is the structure that all rows in the JTable 
- * will follow.
- **********************************************************************/
+/*************************************************************************
+ * The StudentTable class creates the structure that jtable will follow
+ * to implement methods and functions on the student database. This
+ * currently includes addition, deletion, editing, saving and loading, 
+ * and simple sorting.
+ * @author William Shreeve, Hai Duong, Trungvuong Pham
+ *
+ ************************************************************************/
 public class StudentTable extends AbstractTableModel{
 	
 	/** default serial ID */

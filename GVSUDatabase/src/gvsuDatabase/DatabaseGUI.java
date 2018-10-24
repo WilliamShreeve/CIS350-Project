@@ -6,6 +6,14 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+/*************************************************************************
+ * DatabaseGUI is the main GUI and controller for functions of the 
+ * student database. It creates a JFrame to hold the JTable of students,
+ * as well as create JMenuItems to perform various tasks such as 
+ * saving, loading, adding, deletion, and editing.
+ * @author William Shreeve, Hai Duong, Trungvuong Pham
+ *
+ ************************************************************************/
 public class DatabaseGUI extends JFrame implements ActionListener{
 
 	/* Holds JMenus.*/
