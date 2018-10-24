@@ -100,7 +100,7 @@ public class Student implements Serializable{
 	/*******************************************************************
 	 * Setter method for major of a student.
 	 * 
-	 * @param name The student's name
+	 * @param major The student's major
 	 * @throws Exception Any data entered is invalid
 	 ******************************************************************/
 	public void setMajor(String major)throws Exception{
@@ -183,7 +183,7 @@ public class Student implements Serializable{
 	/*******************************************************************
 	 * Setter method for the expected graduation date.
 	 * 
-	 * @param standing The student's class standing
+	 * @param expGrad The student's class standing
 	 * @throws Exception Any data entered is invalid
 	 ******************************************************************/
 	public void setExpGrad(String expGrad)throws Exception{

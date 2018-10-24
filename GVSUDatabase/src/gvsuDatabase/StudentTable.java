@@ -143,7 +143,7 @@ public class StudentTable extends AbstractTableModel{
 	/*******************************************************************
 	 * Adds a student to the list (and updates the view)
 	 * 
-	 * @param site the site to be added to the list (and view)
+	 * @param student Student to be added to the list
 	 ******************************************************************/
 	public void add(Student student) {
 		students.add(student);
@@ -276,8 +276,6 @@ public class StudentTable extends AbstractTableModel{
 	/*******************************************************************
 	 * This method sorts the standings of the students, 
 	 * using an anonymous class in Java.
-	 * 
-	 * @return The order in which the standings are
 	 ******************************************************************/
 	public void sortByStanding(){
 		Collections.sort(getStudents(), new Comparator<Student>() {
