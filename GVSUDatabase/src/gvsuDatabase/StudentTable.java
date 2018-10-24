@@ -283,7 +283,7 @@ public class StudentTable extends AbstractTableModel{
 				   return o1.getStanding().compareTo(o2.getStanding());
 			   }});
 		refresh();
-	}
+	} 
 	
 	/*******************************************************************
 	 * Saves the list of students as a serializable file
