@@ -40,6 +40,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 	private JMenuItem viewStudent;
 	private JMenuItem sortByName;
 	private JMenuItem sortByGPA;
+	private JMenuItem undo;
 	
 	/* Student Table View */
 	private StudentTable studentList;
@@ -69,6 +70,8 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		
 		saveSerial = new JMenuItem("Save");
 		loadSerial = new JMenuItem("Load");
+		
+		undo = new JMenuItem("Undo");
 		
 		addStudent = new JMenuItem("Add Student");
 		editStudent = new JMenuItem("Edit Student");
@@ -111,6 +114,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		
 		fileMenu.add(saveSerial);
 		fileMenu.add(loadSerial);
+		fileMenu.add(undo);
 		
 		editMenu.add(addStudent);
 		editMenu.add(editStudent);
@@ -139,6 +143,7 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 		deleteStudent.addActionListener(this);
 		sortByName.addActionListener(this);
 		sortByGPA.addActionListener(this);
+		undo.addActionListener(this);
 	}
 	
 	@Override
@@ -183,10 +188,20 @@ public class DatabaseGUI extends JFrame implements ActionListener{
 			catch (Exception e1){
 				JOptionPane.showMessageDialog(null, "No Student Selected!");
 			}
+
 		}
 		
 		else if(e.getSource() == deleteStudent) {
-			studentList.remove(jtable.getSelectedRow());
+			try {
+				studentList.remove(jtable.getSelectedRow());
+			}
+			catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "No Student Selected!");
+			}
+		}
+		
+		else if(e.getSource() == undo) {
+			studentList.undo();
 		}
 		
 		else if(e.getSource() == sortByName) {

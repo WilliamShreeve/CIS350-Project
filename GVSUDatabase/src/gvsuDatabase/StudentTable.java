@@ -140,8 +140,9 @@ public class StudentTable extends AbstractTableModel{
 	 * @param index the index of the requested student
 	 * @return the student at the specified index
 	 ******************************************************************/
-	public Student getAtIndex(int index) {
-		return students.get(index);
+	public Student getAtIndex(int index) throws IndexOutOfBoundsException {
+			return students.get(index);
+		
 	}
 	
 	/*******************************************************************
