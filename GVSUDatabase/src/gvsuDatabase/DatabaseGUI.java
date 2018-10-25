@@ -69,9 +69,6 @@ public class DatabaseGUI extends JFrame implements ActionListener {
     /** JMenu Item. */
     private JMenuItem sortByGPA;
 
-    /** JMenu Item. */
-    private JMenuItem sortByExpGrad;
-
     /** Student Table View. */
     private StudentTable studentList;
 
@@ -111,7 +108,6 @@ public class DatabaseGUI extends JFrame implements ActionListener {
 
         sortByName = new JMenuItem("Sort By Name");
         sortByGPA = new JMenuItem("Sort By GPA");
-        sortByExpGrad = new JMenuItem("Sort By Exp. Graduation");
 
         jtable = new JTable(studentList);
         add(new JScrollPane(jtable));
@@ -152,8 +148,7 @@ public class DatabaseGUI extends JFrame implements ActionListener {
 
          sortMenu.add(sortByName);
          //sortMenu.add(sortByGPA);
-         sortMenu.add(sortByExpGrad);
-
+         
          menu.add(fileMenu);
          menu.add(editMenu);
          //menu.add(viewMenu);
@@ -172,7 +167,6 @@ public class DatabaseGUI extends JFrame implements ActionListener {
          deleteStudent.addActionListener(this);
          sortByName.addActionListener(this);
          sortByGPA.addActionListener(this);
-         sortByExpGrad.addActionListener(this);
          undo.addActionListener(this);
      }
 
@@ -223,9 +217,7 @@ public class DatabaseGUI extends JFrame implements ActionListener {
                      studentList.undo();
                  } else if (e.getSource() == sortByName) {
                      studentList.sortByName();
-                 } else if (e.getSource() == sortByExpGrad) {
-                     studentList.sortByExpGrad();
-                 }
+                 } 
              }
          }
 
