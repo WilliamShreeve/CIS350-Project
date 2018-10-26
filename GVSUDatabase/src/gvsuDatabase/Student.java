@@ -30,7 +30,7 @@ public class Student implements Serializable {
     private String expGrad;
 
     /** Student's gpa.**/
-    private float gpa;
+    private double gpa;
 
     /*******************************************************************
      * Constructor that sets up the student information with given
@@ -44,8 +44,8 @@ public class Student implements Serializable {
      *
      * @throws Exception Any set methods receive bad data
      ******************************************************************/
-    public Student(final String name, final String major, final String standing,
-            final String gNum, final String expGrad) throws Exception {
+    public Student(String name, String major, String standing,
+            String gNum, String expGrad) throws Exception {
         /** sets the name of the student */
         setName(name);
 
@@ -85,11 +85,12 @@ public class Student implements Serializable {
      * @param name The student's name
      * @throws Exception when any data entered is invalid
      ******************************************************************/
-    public void setName(final String name)throws Exception {
+    public void setName(String name)throws Exception {
         if (name.equals("")) {
             throw new Exception("Name cannot be empty");
+        } else {
+            this.name = name;
         }
-        this.name = name;
     }
 
     /*******************************************************************
@@ -106,7 +107,7 @@ public class Student implements Serializable {
      * @param major The student's name
      * @throws Exception Any data entered is invalid
      ******************************************************************/
-    public void setMajor(final String major)throws Exception {
+    public void setMajor(String major)throws Exception {
         if (major.equals("")) {
             throw new Exception("Major cannot be empty");
         }
@@ -127,7 +128,7 @@ public class Student implements Serializable {
      *
      * @return student's GPA as a float
      *****************************************************************/
-    public float getGPA() {
+    public double getGPA() {
         return gpa;
     }
 
@@ -137,7 +138,7 @@ public class Student implements Serializable {
      * @param g The student's GPA
      * @throws Exception A value less than 0 or higher than 4
      ******************************************************************/
-    public void setGPA(final float g) throws Exception {
+    public void setGPA(double g) throws Exception {
         if (g > 4.0 || g < 0) {
             throw new Exception("Invalid GPA");
         }
@@ -149,7 +150,7 @@ public class Student implements Serializable {
      * @param standing The student's class standing
      * @throws Exception Any data entered is invalid
      ******************************************************************/
-    public void setStanding(final String standing) throws Exception {
+    public void setStanding(String standing) throws Exception {
         if (standing.equals("")) {
             throw new Exception("Standing cannot be empty");
         }
@@ -171,7 +172,7 @@ public class Student implements Serializable {
      * @param gNum The student's G Number
      * @throws Exception Any data entered is invalid
      ******************************************************************/
-    public void setGNum(final String gNum) throws Exception {
+    public void setGNum(String gNum) throws Exception {
         if (gNum.equals("")) {
             throw new Exception("G Number cannot be empty");
         }
@@ -194,10 +195,11 @@ public class Student implements Serializable {
      * @param expGrad The student's class standing
      * @throws Exception Any data entered is invalid
      ******************************************************************/
-    public void setExpGrad(final String expGrad)throws Exception {
+    public void setExpGrad(String expGrad)throws Exception {
         if (expGrad.equals("")) {
             throw new Exception("Standing cannot be empty");
         }
         this.expGrad = expGrad;
     }
 }
+
